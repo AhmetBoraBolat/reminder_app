@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../util/dashboard_card.dart';
+import '../util/dashboard_uicard.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -13,42 +16,53 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Padding(
+        body: const Padding(
           // SEARCH BAR
-          padding: const EdgeInsets.only(top: 70, right: 45, left: 45),
+          padding: EdgeInsets.only(top: 40, right: 40, left: 40),
           child: Column(
             children: [
               Expanded(
-                flex: 1,
-                child: Container(
-                  width: double.infinity,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: const Center(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.search_sharp),
-                        iconColor: Colors.grey,
-                        hintText: 'Search...',
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                // İMAGE GELECEK İMAGE DE GÜNLÜK PLANIN KAÇI TAMAMLANDIĞI GÖZÜKECEK
-                flex: 6,
-                child: Container(),
+                flex: 5,
+                // Dashboard 'Your plan for today!' card
+                child: DashUICard(),
               ),
               Expanded(
                 // GÜNLÜK PLANLAR GÖZÜKECEK KART ŞEKLİNDE SOL DA İKON ORTADA BÜYÜK BİR BAŞLIK ALTTA SAAT SAĞDA SAĞA DOĞRU OK
                 flex: 7,
-                child: Container(),
-              )
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'Daily Review',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    /////KARTLAR BURDA OLCAK
+
+                    DashCard(
+                      taskName: 'Parol',
+                      taskTime: '11.00',
+                      taskCompleted: false,
+                    ),
+                    DashCard(
+                      taskName: 'Bench Press',
+                      taskTime: '14.00',
+                      taskCompleted: false,
+                    ),
+                    DashCard(
+                      taskName: 'Pharmaton',
+                      taskTime: '7.00',
+                      taskCompleted: true,
+                    ),
+                    DashCard(
+                      taskName: 'Sleep',
+                      taskTime: '20.00',
+                      taskCompleted: false,
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -103,12 +117,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: MaterialButton(
                     minWidth: 80,
                     onPressed: () {/* işlem yapılacak */},
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.inventory_2_sharp,
-                          color: Colors.green[700],
+                          color: Colors.grey,
                         )
                       ],
                     ),
@@ -124,12 +138,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: MaterialButton(
                     minWidth: 80,
                     onPressed: () {/* işlem yapılacak */},
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.chat_bubble_outline_sharp,
-                          color: Colors.green[700],
+                          color: Colors.grey,
                         )
                       ],
                     ),
@@ -140,12 +154,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: MaterialButton(
                     minWidth: 80,
                     onPressed: () {/* işlem yapılacak */},
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.location_on,
-                          color: Colors.green[700],
+                          color: Colors.grey,
                         )
                       ],
                     ),
