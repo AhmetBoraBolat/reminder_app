@@ -1,10 +1,67 @@
 import 'package:flutter/material.dart';
+import '../util/dashboard_card.dart';
 
-class DashUICard extends StatelessWidget {
-  const DashUICard({super.key});
+class DashBoard extends StatefulWidget {
+  const DashBoard({super.key});
 
   @override
+  State<DashBoard> createState() => _DashBoardState();
+}
+
+class _DashBoardState extends State<DashBoard> {
+  @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 40, right: 40, left: 40),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 5,
+            // Dashboard 'Your plan for today!' card
+            child: dashBoardUICard(),
+          ),
+          const Expanded(
+            // GÜNLÜK PLANLAR GÖZÜKECEK KART ŞEKLİNDE SOL DA İKON ORTADA BÜYÜK BİR BAŞLIK ALTTA SAAT SAĞDA SAĞA DOĞRU OK
+            flex: 7,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  'Daily Review',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                /////KARTLAR BURDA OLCAK
+
+                DashCard(
+                  taskName: 'Parol',
+                  taskTime: '11.00',
+                  taskCompleted: false,
+                ),
+                DashCard(
+                  taskName: 'Bench Press',
+                  taskTime: '14.00',
+                  taskCompleted: false,
+                ),
+                DashCard(
+                  taskName: 'Pharmaton',
+                  taskTime: '7.00',
+                  taskCompleted: true,
+                ),
+                DashCard(
+                  taskName: 'Sleep',
+                  taskTime: '20.00',
+                  taskCompleted: false,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding dashBoardUICard() {
     return Padding(
       padding: const EdgeInsets.only(top: 50),
       child: Stack(
